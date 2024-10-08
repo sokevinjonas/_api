@@ -15,12 +15,21 @@ export default class User extends compose(BaseModel, AuthFinder) {
   declare id: number
 
   @column()
-  declare fullName: string | null
+  declare nom_etablissement: string
 
   @column()
-  declare email: string
+  declare nom_proprietaire: string
 
-  @column({ serializeAs: null })
+  @column()
+  declare indicatif_pays: string
+
+  @column()
+  declare telephone: string
+
+  @column()
+  declare role: 'admin' | 'employer' // Rôle de l'utilisateur
+
+  @column({ serializeAs: null }) // Ne pas retourner le mot de passe dans les réponses JSON
   declare password: string
 
   @column.dateTime({ autoCreate: true })
